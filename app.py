@@ -24,23 +24,7 @@ Displays the predicted output in the UI.
 ✅ Make sure the Flask API is running before testing!'''
 
 
-import subprocess
-import time
-import requests
 
-# Function to check if API is running
-def check_api():
-    try:
-        response = requests.get("http://127.0.0.1:5000")
-        return response.status_code == 200
-    except:
-        return False
-
-# Start Flask API (api.py) if not already running
-if not check_api():
-    print("Starting API...")
-    api_process = subprocess.Popen(["python", "api.py"])
-    time.sleep(3)  # Give it time to start
 import streamlit as st
 import requests
 import time
@@ -138,7 +122,7 @@ elif st.session_state.page == "features":
     if st.button("✨ Predict Now"):
         with st.spinner("⏳ Analyzing the wine quality..."):
             time.sleep(2)
-            response = requests.post("http://127.0.0.1:5000/predict", json={"features": features})
+            response = requests.post("https://Rhumeet-wine-quality-api.hf.space/predict", json={"features": features})
             predicted_quality = response.json()["prediction"][0]
         st.markdown(f"<div class='result'>✅ Predicted Wine Quality: <strong>{predicted_quality}</strong></div>", unsafe_allow_html=True)
 
@@ -150,6 +134,6 @@ elif st.session_state.page == "file":
         if st.button("📊 Predict from File"):
             with st.spinner("⏳ Processing file predictions..."):
                 time.sleep(2)
-                response = requests.post("http://127.0.0.1:5000/predict_file", files={"file": file})
+                response = requests.post("https://Rhumeet-wine-quality-api.hf.space/predict_file", files={"file": file})
                 predictions = response.text
             st.markdown(f"<div class='result'>✅ Predicted Wine Quality for Uploaded File:<br>{predictions}</div>", unsafe_allow_html=True)
