@@ -24,7 +24,10 @@ Displays the predicted output in the UI.
 ✅ Make sure the Flask API is running before testing!'''
 
 
+import subprocess
 
+# Start Flask API in the background
+subprocess.Popen(["python", "api.py"])
 import streamlit as st
 import requests
 import time
