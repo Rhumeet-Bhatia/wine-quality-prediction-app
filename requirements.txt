@@ -16,8 +16,4 @@ matplotlib
 seaborn
 
 # Environment variables
-dotenv
-
-# Serialization & System utilities
-pickle
-os
+python-dotenv
