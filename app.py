@@ -25,9 +25,22 @@ Displays the predicted output in the UI.
 
 
 import subprocess
+import time
+import requests
 
-# Start Flask API in the background
-subprocess.Popen(["python", "api.py"])
+# Function to check if API is running
+def check_api():
+    try:
+        response = requests.get("http://127.0.0.1:5000")
+        return response.status_code == 200
+    except:
+        return False
+
+# Start Flask API (api.py) if not already running
+if not check_api():
+    print("Starting API...")
+    api_process = subprocess.Popen(["python", "api.py"])
+    time.sleep(3)  # Give it time to start
 import streamlit as st
 import requests
 import time
