@@ -1,0 +1,23 @@
+# Web frameworks
+flask
+streamlit
+
+# HTTP requests
+requests
+
+# Data processing & ML
+numpy
+pandas
+scikit-learn
+statsmodels
+
+# Visualization
+matplotlib
+seaborn
+
+# Environment variables
+dotenv
+
+# Serialization & System utilities
+pickle
+os
